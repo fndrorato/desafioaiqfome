@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main  # Substitua 'main' pelo nome da sua branch principal
+  push:
+    branches:
+      - main  # Substitua 'main' pelo nome da sua branch principal
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # Pode ser ajustado dependendo das suas necessidades
+
+    steps:
+    - name: Checkout do Código
+      uses: actions/checkout@v2
+
+    - name: Configurar o Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: Instalar Dependências
+      run: npm install
+
+    - name: Executar Testes
+      run: npm test
